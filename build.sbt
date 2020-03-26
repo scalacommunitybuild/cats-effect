@@ -257,7 +257,7 @@ lazy val core = crossProject(JSPlatform, JVMPlatform)
   .jsConfigure(_.enablePlugins(AutomateHeaderPlugin))
   .jsConfigure(_.settings(scalaJSSettings))
   .jvmSettings(
-    skip.in(publish) := customScalaJSVersion.forall(_.startsWith("1.0"))
+    skip.in(publish) := customScalaJSVersion.exists(_.startsWith("1.0"))
   )
 
 lazy val coreJVM = core.jvm
@@ -279,7 +279,7 @@ lazy val laws = crossProject(JSPlatform, JVMPlatform)
   .jsConfigure(_.enablePlugins(AutomateHeaderPlugin))
   .jsConfigure(_.settings(scalaJSSettings))
   .jvmSettings(
-    skip.in(publish) := customScalaJSVersion.forall(_.startsWith("1.0"))
+    skip.in(publish) := customScalaJSVersion.exists(_.startsWith("1.0"))
   )
 
 lazy val lawsJVM = laws.jvm
